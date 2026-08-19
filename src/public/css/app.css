@@ -1005,6 +1005,19 @@ footer .wrapper {
   .footer-link {
     margin-bottom: 0.3rem;
   }
+  .social-links {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 10px !important;
 }
 
-/*# sourceMappingURL=app.css.map */
+.social-links a {
+  width: 42px !important;
+  height: 42px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+}
+} /* Dấu đóng ngoặc cho @media ở dòng 706 nằm ở đây */
