@@ -1,27 +1,27 @@
-<div class="container mt-4">
-    <h3>Bài viết của tôi</h3>
+<div class="container mt-4 text-white">
+    <h3 class="text-white font-weight-bold mb-4">Bài viết của tôi</h3>
     
-    <table class="table table-striped mt-4">
+    <table class="table table-dark table-hover text-white mt-4">
         <thead>
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Tên bài viết</th>
-                <th scope="col">Thời gian tạo</th>
-                <th scope="col">Thao tác</th>
+            <tr class="text-white">
+                <th scope="col" class="text-white">#</th>
+                <th scope="col" class="text-white">Tên bài viết</th>
+                <th scope="col" class="text-white">Thời gian tạo</th>
+                <th scope="col" class="text-white">Thao tác</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="text-white">
             {{#each blogs}}
-            <tr>
-                <th scope="row">{{@index}}</th>
-                <td>{{this.title}}</td>
-                <td>{{dateFormat this.createdAt}}</td>
+            <tr class="text-white">
+                <th scope="row" class="text-white">{{@index}}</th>
+                <td class="text-white">{{this.title}}</td>
+                <td class="text-white">{{dateFormat this.createdAt}}</td>
                 <td>
-                    <a href="/blogs/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    <a href="/blogs/{{this._id}}/edit" class="btn btn-link text-info p-0 mr-2">Sửa</a>
                     
                     {{!-- Form xóa bài viết gửi phương thức DELETE --}}
                     <form method="POST" action="/blogs/{{this._id}}?_method=DELETE" style="display: inline;">
-                        <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
+                        <button type="submit" class="btn btn-link text-danger p-0 border-0 bg-transparent" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
                             Xóa
                         </button>
                     </form>
@@ -29,9 +29,9 @@
             </tr>
             {{else}}
             <tr>
-                <td colspan="4" class="text-center">
+                <td colspan="4" class="text-center text-white py-4">
                     Bạn chưa đăng bài viết nào. 
-                    <a href="/blogs/create">Đăng bài viết ngay!</a>
+                    <a href="/blogs/create" class="text-primary font-weight-bold">Đăng bài viết ngay!</a>
                 </td>
             </tr>
             {{/each}}
