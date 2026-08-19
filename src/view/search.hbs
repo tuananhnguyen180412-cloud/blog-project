@@ -1,0 +1,75 @@
+<div class="container py-4">
+    <!-- KHUNG TÌM KIẾM -->
+    <div class="card bg-dark text-white border-secondary shadow-lg mb-5 rounded-lg overflow-hidden">
+        <div class="card-body p-4 p-md-5">
+            <h2 class="font-weight-bold text-primary mb-2">
+                <i class="fa-solid fa-magnifying-glass mr-2"></i>Tìm kiếm bài viết
+            </h2>
+            <p class="text-muted mb-4">Nhập từ khóa để tra cứu bài viết công nghệ và tin tức mới nhất.</p>
+
+            <form action="/search" method="GET">
+                <div class="form-group mb-3">
+                    <label for="search-input" class="text-light font-weight-bold mb-2">Từ khóa tìm kiếm</label>
+                    <input 
+                        type="text" 
+                        name="q" 
+                        class="form-control bg-secondary text-white border-secondary" 
+                        id="search-input" 
+                        value="{{query}}" 
+                        placeholder="Nhập từ khóa..."
+                        style="color: #fff !important;"
+                    >
+                </div>
+
+                <div class="d-flex flex-wrap align-items-center justify-content-between mt-3">
+                    <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold shadow-sm mb-2 mb-md-0">
+                        <i class="fa-solid fa-magnifying-glass mr-2"></i>Tìm kiếm
+                    </button>
+
+                    <!-- Từ khóa hot gợi ý -->
+                    <div class="small text-muted">
+                        <span class="mr-2"><i class="fa-solid fa-fire text-warning mr-1"></i>Từ khóa gợi ý:</span>
+                        <a href="/search?q=NodeJS" class="badge badge-secondary p-2 mr-1">NodeJS</a>
+                        <a href="/search?q=MongoDB" class="badge badge-secondary p-2 mr-1">MongoDB</a>
+                        <a href="/search?q=Bootstrap" class="badge badge-secondary p-2">Bootstrap</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- PHẦN HIỂN THỊ KẾT QUẢ TÌM KIẾM -->
+    <div class="search-results">
+        {{#if query}}
+            <h4 class="mb-4 text-light border-left border-primary pl-3">
+                Kết quả tìm kiếm cho từ khóa: <strong class="text-primary">"{{query}}"</strong>
+            </h4>
+
+            <div class="row">
+                {{#each blogs}}
+                <div class="col-sm-6 col-lg-4 mb-4">
+                    <div class="card bg-dark text-white border-secondary h-100 shadow-sm d-flex flex-column justify-content-between">
+                        <div class="card-body">
+                            <h5 class="card-title font-weight-bold text-light mb-3">{{this.title}}</h5>
+                            <p class="card-text text-muted small">{{this.description}}</p>
+                        </div>
+                        <div class="card-footer bg-transparent border-top border-secondary pt-3 pb-3">
+                            <a href="/blogs/{{this._id}}" class="btn btn-outline-primary btn-block font-weight-bold">
+                                Đọc bài viết <i class="fa-solid fa-arrow-right ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                {{else}}
+                <div class="col-12">
+                    <div class="card bg-dark border-secondary p-5 text-center shadow-sm">
+                        <i class="fa-solid fa-triangle-exclamation text-warning display-4 mb-3"></i>
+                        <h5 class="text-light">Không tìm thấy bài viết nào phù hợp</h5>
+                        <p class="text-muted mb-0 small">Rất tiếc, không tìm thấy nội dung nào cho từ khóa <strong>"{{query}}"</strong>. Hãy thử tìm bằng từ khóa khác!</p>
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        {{/if}}
+    </div>
+</div>

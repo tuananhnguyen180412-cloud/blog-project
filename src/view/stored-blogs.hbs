@@ -1,0 +1,40 @@
+<div class="container mt-4">
+    <h3>Bài viết của tôi</h3>
+    
+    <table class="table table-striped mt-4">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Tên bài viết</th>
+                <th scope="col">Thời gian tạo</th>
+                <th scope="col">Thao tác</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each blogs}}
+            <tr>
+                <th scope="row">{{@index}}</th>
+                <td>{{this.title}}</td>
+                <td>{{dateFormat this.createdAt}}</td>
+                <td>
+                    <a href="/blogs/{{this._id}}/edit" class="btn btn-link">Sửa</a>
+                    
+                    {{!-- Form xóa bài viết gửi phương thức DELETE --}}
+                    <form method="POST" action="/blogs/{{this._id}}?_method=DELETE" style="display: inline;">
+                        <button type="submit" class="btn btn-link text-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa bài viết này?')">
+                            Xóa
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {{else}}
+            <tr>
+                <td colspan="4" class="text-center">
+                    Bạn chưa đăng bài viết nào. 
+                    <a href="/blogs/create">Đăng bài viết ngay!</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>

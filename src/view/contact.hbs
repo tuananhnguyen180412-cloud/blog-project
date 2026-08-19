@@ -1,0 +1,130 @@
+<div class="contact-page py-4">
+    <!-- TIÊU ĐỀ TRANG -->
+    <div class="text-center mb-5">
+        <h2 class="display-4 font-weight-bold text-primary mb-2">Liên hệ với tôi</h2>
+        <p class="text-muted lead">Bạn có câu hỏi, góp ý hay muốn hợp tác? Vui lòng gửi tin nhắn, tôi sẽ phản hồi sớm nhất!</p>
+    </div>
+
+    <div class="row">
+        <!-- CỘT TRÁI: THÔNG TIN LIÊN HỆ -->
+        <div class="col-lg-5 mb-4 mb-lg-0">
+            <div class="card bg-dark text-white border-secondary h-100 shadow-lg p-3">
+                <div class="card-body">
+                    <h3 class="h4 font-weight-bold text-primary mb-4 border-bottom border-secondary pb-3">
+                        <i class="fa-solid fa-address-card mr-2"></i>Thông tin trực tiếp
+                    </h3>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="btn btn-outline-primary rounded-circle mr-3 px-3 py-2">
+                            <i class="fa-solid fa-envelope fa-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-muted d-block small">Email hỗ trợ</span>
+                            <strong class="text-light">contact@tuananhblog.com</strong>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="btn btn-outline-primary rounded-circle mr-3 px-3 py-2">
+                            <i class="fa-solid fa-phone fa-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-muted d-block small">Điện thoại</span>
+                            <strong class="text-light">+84 (0) 90 123 4567</strong>
+                        </div>
+                    </div>
+
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="btn btn-outline-primary rounded-circle mr-3 px-3 py-2">
+                            <i class="fa-solid fa-location-dot fa-lg"></i>
+                        </div>
+                        <div>
+                            <span class="text-muted d-block small">Địa chỉ</span>
+                            <strong class="text-light">TP. Hồ Chí Minh, Việt Nam</strong>
+                        </div>
+                    </div>
+
+                    <hr class="border-secondary my-4">
+
+                    <!-- MẠNG XÃ HỘI -->
+                    <h5 class="h6 font-weight-bold text-light mb-3">Kết nối qua mạng xã hội</h5>
+                    <div class="d-flex">
+                        <a href="#" class="btn btn-outline-light mr-2 rounded-circle" style="width: 42px; height: 42px;"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="btn btn-outline-light mr-2 rounded-circle" style="width: 42px; height: 42px;"><i class="fa-brands fa-github"></i></a>
+                        <a href="#" class="btn btn-outline-light mr-2 rounded-circle" style="width: 42px; height: 42px;"><i class="fa-brands fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CỘT PHẢI: FORM GỬI TIN NHẮN -->
+        <div class="col-lg-7">
+            <div class="card bg-dark text-white border-secondary shadow-lg p-3">
+                <div class="card-body">
+                    <h3 class="h4 font-weight-bold text-primary mb-4 border-bottom border-secondary pb-3">
+                        <i class="fa-solid fa-paper-plane mr-2"></i>Gửi tin nhắn
+                    </h3>
+
+                    <form action="/contact" method="POST">
+                        <div class="form-row">
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="fullname" class="text-light font-weight-bold">Họ và tên</label>
+                                <input 
+                                    type="text" 
+                                    name="fullname" 
+                                    class="form-control bg-secondary text-white border-secondary" 
+                                    id="fullname" 
+                                    placeholder="Nhập họ tên..."
+                                    required
+                                    style="color: #fff !important;"
+                                >
+                            </div>
+                            <div class="form-group col-md-6 mb-3">
+                                <label for="email" class="text-light font-weight-bold">Địa chỉ Email</label>
+                                <input 
+                                    type="email" 
+                                    name="email" 
+                                    class="form-control bg-secondary text-white border-secondary" 
+                                    id="email" 
+                                    placeholder="name@example.com"
+                                    required
+                                    style="color: #fff !important;"
+                                >
+                            </div>
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <label for="subject" class="text-light font-weight-bold">Tiêu đề</label>
+                            <input 
+                                type="text" 
+                                name="subject" 
+                                class="form-control bg-secondary text-white border-secondary" 
+                                id="subject" 
+                                placeholder="Cần tư vấn / Góp ý / Hợp tác..."
+                                required
+                                style="color: #fff !important;"
+                            >
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label for="message" class="text-light font-weight-bold">Nội dung tin nhắn</label>
+                            <textarea 
+                                name="message" 
+                                class="form-control bg-secondary text-white border-secondary" 
+                                id="message" 
+                                rows="5" 
+                                placeholder="Viết nội dung tin nhắn của bạn tại đây..."
+                                required
+                                style="color: #fff !important;"
+                            ></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary px-4 py-2 font-weight-bold shadow-sm">
+                            <i class="fa-solid fa-paper-plane mr-2"></i>Gửi tin nhắn ngay
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

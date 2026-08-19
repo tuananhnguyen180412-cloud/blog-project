@@ -1,0 +1,63 @@
+<header class="mb-4">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm border-bottom border-secondary py-3">
+        <div class="container">
+            <!-- Brand Logo -->
+            <a class="navbar-brand font-weight-bold text-primary" href="/">
+                <i class="fa-solid fa-code mr-2"></i>TuanAnh Blog
+            </a>
+            
+            <!-- Nút Toggle Mobile -->
+            <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!-- Menu Điều hướng chính -->
+                <ul class="navbar-nav mr-auto ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About Me</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Các nút Tài khoản & Đăng nhập / Đăng ký nằm bên phải -->
+                <ul class="navbar-nav ml-auto ms-auto align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-light mr-2" href="/login">Đăng nhập</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary btn-sm px-3 rounded-pill mr-lg-3 my-2 my-lg-0" href="/register">Đăng ký</a>
+                    </li>
+                    
+                    <!-- Dropdown My Account -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fa-solid fa-circle-user mr-1 text-primary"></i> My Account
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-end bg-dark border-secondary shadow-lg mt-2" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item text-light" href="/blogs/create">
+                                <i class="fa-solid fa-pen-to-square mr-2 text-muted"></i>Create blog
+                            </a>
+                            <div class="dropdown-divider border-secondary"></div>
+                            <a class="dropdown-item text-light" href="/me/stored/blogs">
+                                <i class="fa-solid fa-folder-open mr-2 text-muted"></i>My blogs
+                            </a>
+                            <div class="dropdown-divider border-secondary"></div>
+                            <a class="dropdown-item text-danger" href="/logout">
+                                <i class="fa-solid fa-right-from-bracket mr-2"></i>Logout
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
