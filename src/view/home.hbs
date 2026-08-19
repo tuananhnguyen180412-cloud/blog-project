@@ -27,7 +27,7 @@
         <div class="col-lg-8">
             <h3 class="h4 font-weight-bold mb-4 border-left border-primary pl-3 text-white">Bài đăng blog mới nhất</h3>
             
-            <div class="mb-4">
+            <div class="mb-4" id="blog-list-container">
                 {{#each blogs}}
                 <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden bg-secondary text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
@@ -41,10 +41,8 @@
                                         {{#if this.tag}}{{this.tag}}{{else}}NodeJS{{/if}}
                                     </span>
                                     <h4 class="card-title h5 font-weight-bold">
-                                        <!-- Đã đổi text-dark -> text-white -->
                                         <a href="/blogs/{{this._id}}" class="text-white text-decoration-none">{{this.title}}</a>
                                     </h4>
-                                    <!-- Đã đổi text-muted -> text-white-50 -->
                                     <p class="card-text text-white-50 small text-truncate">
                                         {{this.content}}
                                     </p>
@@ -52,9 +50,7 @@
                                 <div class="d-flex align-items-center mt-3 pt-2 border-top border-secondary">
                                     <img src="/img/my-avatar.png" alt="Nguyen Tuan Anh" class="rounded-circle mr-2" width="35" height="35" style="object-fit: cover;" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png';">
                                     <div class="small">
-                                        <!-- Đã đổi text-dark -> text-white -->
                                         <a href="#" class="text-white font-weight-bold d-block text-decoration-none">Nguyen Tuan Anh</a>
-                                        <!-- Đã đổi text-muted -> text-white-50 -->
                                         <span class="text-white-50">
                                             {{dateFormat updatedAt "dddd, DD-MM-YYYY"}}
                                         </span>
@@ -67,8 +63,11 @@
                 {{/each}}
             </div>
 
+            <!-- NÚT TẢI THÊM ĐÃ ĐƯỢC CẬP NHẬT -->
             <div class="text-center mb-5">
-                <button class="btn btn-outline-light px-4 shadow-sm">Tải thêm</button>
+                <a href="/search" id="load-more-btn" class="btn btn-outline-light px-4 shadow-sm rounded-pill">
+                    Tải thêm
+                </a>
             </div>
         </div>
 
@@ -79,15 +78,15 @@
                 <div class="card-body">
                     <h4 class="h5 font-weight-bold mb-3 text-white">Chủ đề</h4>
                     <div class="list-group list-group-flush">
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
+                        <a href="/search?topic=database" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
                             <i class="fa-solid fa-database text-primary mr-3"></i>
                             <span>Cơ sở dữ liệu</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
+                        <a href="/search?topic=a11y" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
                             <i class="fa-solid fa-universal-access text-primary mr-3"></i>
                             <span>Khả năng tiếp cận</span>
                         </a>
-                        <a href="#" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
+                        <a href="/search?topic=webperf" class="list-group-item list-group-item-action d-flex align-items-center border-0 px-0 bg-transparent text-white">
                             <i class="fa-solid fa-rocket text-primary mr-3"></i>
                             <span>Hiệu suất Web</span>
                         </a>
@@ -100,14 +99,14 @@
                 <div class="card-body">
                     <h4 class="h5 font-weight-bold mb-3 text-white">Thẻ</h4>
                     <div class="d-flex flex-wrap" style="gap: 6px;">
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#mongodb</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#nodejs</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#a11y</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#di chuyển</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#bao gồm</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#webperf</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#tối ưu hóa</span>
-                        <span class="badge badge-dark border border-secondary p-2 text-white-50">#hiệu suất</span>
+                        <a href="/search?tag=mongodb" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#mongodb</a>
+                        <a href="/search?tag=nodejs" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#nodejs</a>
+                        <a href="/search?tag=a11y" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#a11y</a>
+                        <a href="/search?tag=di-chuyen" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#di chuyển</a>
+                        <a href="/search?tag=bao-gom" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#bao gồm</a>
+                        <a href="/search?tag=webperf" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#webperf</a>
+                        <a href="/search?tag=toi-uu-hoa" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#tối ưu hóa</a>
+                        <a href="/search?tag=hieu-suat" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#hiệu suất</a>
                     </div>
                 </div>
             </div>
