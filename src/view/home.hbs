@@ -31,8 +31,11 @@
                 {{#each blogs}}
                 <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden bg-secondary text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
+                        <!-- BỌC LINK CHO HÌNH ẢNH -->
                         <div class="col-md-4 bg-dark">
-                            <img src="{{this.img}}" alt="{{this.title}}" class="w-100 h-100" style="object-fit: cover; min-height: 180px;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80';">
+                            <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}">
+                                <img src="{{this.img}}" alt="{{this.title}}" class="w-100 h-100" style="object-fit: cover; min-height: 180px;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80';">
+                            </a>
                         </div>
                         <div class="col-md-8">
                             <div class="card-body d-flex flex-column justify-content-between h-100 py-3">
@@ -40,9 +43,14 @@
                                     <span class="badge badge-primary mb-2 p-2">
                                         {{#if this.tag}}{{this.tag}}{{else}}NodeJS{{/if}}
                                     </span>
+                                    
+                                    <!-- BỌC LINK CHO TIÊU ĐỀ BÀI VIẾT -->
                                     <h4 class="card-title h5 font-weight-bold">
-                                        <a href="/blogs/{{this._id}}" class="text-white text-decoration-none">{{this.title}}</a>
+                                        <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}" class="text-white text-decoration-none">
+                                            {{this.title}}
+                                        </a>
                                     </h4>
+                                    
                                     <p class="card-text text-white-50 small text-truncate">
                                         {{this.content}}
                                     </p>
@@ -63,7 +71,7 @@
                 {{/each}}
             </div>
 
-            <!-- NÚT TẢI THÊM ĐÃ ĐƯỢC CẬP NHẬT -->
+            <!-- NÚT TẢI THÊM -->
             <div class="text-center mb-5">
                 <a href="/search" id="load-more-btn" class="btn btn-outline-light px-4 shadow-sm rounded-pill">
                     Tải thêm
