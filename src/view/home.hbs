@@ -21,14 +21,13 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER SELECT -->
+    <!-- CATEGORY FILTER SELECT (Đã sửa không còn bị lặp 2 chữ Tất cả) -->
     <div class="mb-4">
         <div class="form-inline">
             <label for="categorySelect" class="text-white-50 mr-2 font-weight-bold mb-0">
                 <i class="fa-solid fa-filter mr-1"></i> Danh mục:
             </label>
             <select id="categorySelect" class="form-control form-control-sm bg-dark text-white border-secondary rounded-pill px-3" style="max-width: 220px; cursor: pointer;" onchange="if (this.value) window.location.href = this.value;">
-                <option value="/">Tất cả</option>
                 {{#each categories}}
                     <option value="/?category={{this}}">{{this}}</option>
                 {{/each}}
@@ -111,6 +110,7 @@
                 </div>
             </div>
 
+            <!-- TOPICS -->
             <div class="card border-0 shadow-sm rounded-lg mb-4 text-white" style="background-color: #212529;">
                 <div class="card-body">
                     <h4 class="h5 font-weight-bold mb-3 text-white">Chủ đề</h4>
