@@ -53,7 +53,8 @@
                 <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
                         <div class="col-md-4 bg-dark">
-                            <a href="/blogs/{{this.slug}}">
+                            <!-- ĐÃ SỬA: Kiểm tra nếu không có slug thì lấy _id -->
+                            <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}">
                                 <img src="{{this.img}}" alt="{{this.title}}" class="w-100 h-100" style="object-fit: cover; min-height: 180px;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80';">
                             </a>
                         </div>
@@ -65,7 +66,8 @@
                                     </span>
                                     
                                     <h4 class="card-title h5 font-weight-bold">
-                                        <a href="/blogs/{{this.slug}}" class="text-white text-decoration-none">
+                                        <!-- ĐÃ SỬA: Kiểm tra nếu không có slug thì lấy _id -->
+                                        <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}" class="text-white text-decoration-none">
                                             {{this.title}}
                                         </a>
                                     </h4>
