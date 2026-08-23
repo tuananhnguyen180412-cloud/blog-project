@@ -21,15 +21,23 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER BUTTONS (Đã sửa trùng lặp nút Tất cả) -->
+    <!-- CATEGORY FILTER BUTTONS -->
     <div class="mb-4">
         <div class="d-flex flex-wrap align-items-center">
             <span class="text-white-50 mr-2 font-weight-bold"><i class="fa-solid fa-filter mr-1"></i> Danh mục:</span>
+            
             {{#each categories}}
-                <a href="/?category={{this}}" 
-                   class="btn btn-sm btn-outline-light text-white mr-2 mb-2 rounded-pill px-3">
-                    {{this}}
-                </a>
+                {{#if (eq this "Tất cả")}}
+                    <!-- Nút Tất cả sẽ trỏ về trang chủ / gốc -->
+                    <a href="/" class="btn btn-sm btn-outline-light text-white mr-2 mb-2 rounded-pill px-3">
+                        {{this}}
+                    </a>
+                {{else}}
+                    <!-- Các danh mục khác trỏ về /?category=... -->
+                    <a href="/?category={{this}}" class="btn btn-sm btn-outline-light text-white mr-2 mb-2 rounded-pill px-3">
+                        {{this}}
+                    </a>
+                {{/if}}
             {{/each}}
         </div>
     </div>
