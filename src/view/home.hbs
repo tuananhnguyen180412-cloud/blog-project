@@ -21,15 +21,16 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER SELECT (Đã fix hoàn toàn lỗi 2 chữ Tất cả) -->
+    <!-- CATEGORY FILTER SELECT -->
     <div class="mb-4">
         <div class="form-inline">
             <label for="categorySelect" class="text-white-50 mr-2 font-weight-bold mb-0">
                 <i class="fa-solid fa-filter mr-1"></i> Danh mục:
             </label>
             <select id="categorySelect" class="form-control form-control-sm bg-dark text-white border-secondary rounded-pill px-3" style="max-width: 220px; cursor: pointer;" onchange="if (this.value) window.location.href = this.value;">
+                <option value="/">Tất cả</option>
                 {{#each categories}}
-                    <option value="{{#if @first}}/{{else}}/?category={{this}}{{/if}}">{{this}}</option>
+                    <option value="/?category={{this}}">{{this}}</option>
                 {{/each}}
             </select>
         </div>
@@ -133,3 +134,19 @@
         </div>
     </div>
 </main>
+
+<script>
+    (function cleanCategories() {
+        var select = document.getElementById('categorySelect');
+        if (!select) return;
+        var seen = {};
+        for (var i = select.options.length - 1; i >= 0; i--) {
+            var txt = select.options[i].text.trim();
+            if (seen[txt]) {
+                select.remove(i);
+            } else {
+                seen[txt] = true;
+            }
+        }
+    })();
+</script>
