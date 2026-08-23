@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER SELECT (Sửa an toàn không gây lỗi 500) -->
+    <!-- CATEGORY FILTER SELECT -->
     <div class="mb-4">
         <div class="form-inline">
             <label for="categorySelect" class="text-white-50 mr-2 font-weight-bold mb-0">
@@ -30,9 +30,7 @@
             <select id="categorySelect" class="form-control form-control-sm bg-dark text-white border-secondary rounded-pill px-3" style="max-width: 220px; cursor: pointer;" onchange="if (this.value) window.location.href = this.value;">
                 <option value="/">Tất cả</option>
                 {{#each categories}}
-                    <option value="/?category={{this}}">
-                        {{this}}
-                    </option>
+                    <option value="/?category={{this}}">{{this}}</option>
                 {{/each}}
             </select>
         </div>
@@ -55,7 +53,7 @@
                 <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
                         <div class="col-md-4 bg-dark">
-                            <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}">
+                            <a href="/blogs/{{this.slug}}">
                                 <img src="{{this.img}}" alt="{{this.title}}" class="w-100 h-100" style="object-fit: cover; min-height: 180px;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80';">
                             </a>
                         </div>
@@ -63,11 +61,11 @@
                             <div class="card-body d-flex flex-column justify-content-between h-100 py-3">
                                 <div>
                                     <span class="badge badge-primary mb-2 p-2">
-                                        {{#if this.category}}{{this.category}}{{else}}Lập trình{{/if}}
+                                        {{this.category}}
                                     </span>
                                     
                                     <h4 class="card-title h5 font-weight-bold">
-                                        <a href="/blogs/{{#if this.slug}}{{this.slug}}{{else}}{{this._id}}{{/if}}" class="text-white text-decoration-none">
+                                        <a href="/blogs/{{this.slug}}" class="text-white text-decoration-none">
                                             {{this.title}}
                                         </a>
                                     </h4>
@@ -80,9 +78,6 @@
                                     <img src="/img/my-avatar.png" alt="Nguyen Tuan Anh" class="rounded-circle mr-2" width="35" height="35" style="object-fit: cover;" onerror="this.onerror=null; this.src='https://cdn-icons-png.flaticon.com/512/149/149071.png';">
                                     <div class="small">
                                         <a href="#" class="text-white font-weight-bold d-block text-decoration-none">Nguyen Tuan Anh</a>
-                                        <span class="text-white-50">
-                                            {{dateFormat updatedAt "dddd, DD-MM-YYYY"}}
-                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -96,7 +91,6 @@
                 {{/each}}
             </div>
 
-            <!-- NÚT TẢI THÊM -->
             <div class="text-center mb-5">
                 <a href="/search" id="load-more-btn" class="btn btn-outline-light px-4 shadow-sm rounded-pill">
                     Tải thêm
@@ -106,7 +100,6 @@
 
         <!-- RIGHT: SIDEBAR -->
         <div class="col-lg-4">
-            <!-- TOPICS -->
             <div class="card border-0 shadow-sm rounded-lg mb-4 text-white" style="background-color: #212529;">
                 <div class="card-body">
                     <h4 class="h5 font-weight-bold mb-3 text-white">Chủ đề</h4>
@@ -124,54 +117,6 @@
                             <span>Hiệu suất Web</span>
                         </a>
                     </div>
-                </div>
-            </div>
-
-            <!-- TAGS -->
-            <div class="card border-0 shadow-sm rounded-lg mb-4 text-white" style="background-color: #212529;">
-                <div class="card-body">
-                    <h4 class="h5 font-weight-bold mb-3 text-white">Thẻ</h4>
-                    <div class="d-flex flex-wrap" style="gap: 6px;">
-                        <a href="/search?tag=mongodb" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#mongodb</a>
-                        <a href="/search?tag=nodejs" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#nodejs</a>
-                        <a href="/search?tag=a11y" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#a11y</a>
-                        <a href="/search?tag=di-chuyen" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#di chuyển</a>
-                        <a href="/search?tag=bao-gom" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#bao gồm</a>
-                        <a href="/search?tag=webperf" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#webperf</a>
-                        <a href="/search?tag=toi-uu-hoa" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#tối ưu hóa</a>
-                        <a href="/search?tag=hieu-suat" class="badge badge-dark border border-secondary p-2 text-white-50 text-decoration-none">#hiệu suất</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTACT SOCIAL -->
-            <div class="card border-0 shadow-sm rounded-lg mb-4 text-white" style="background-color: #212529;">
-                <div class="card-body">
-                    <h4 class="h5 font-weight-bold mb-2 text-white">Hãy cùng trò chuyện</h4>
-                    <p class="small text-white-50 mb-3">
-                        Bạn có muốn tìm hiểu thêm về cách tôi có thể giúp công ty của bạn giải quyết các vấn đề? Hãy cùng trò chuyện.
-                    </p>
-                    <div>
-                        <a href="#" class="btn btn-sm btn-dark text-primary mr-1 border-secondary"><i class="fa-brands fa-discord"></i></a>
-                        <a href="#" class="btn btn-sm btn-dark text-info mr-1 border-secondary"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#" class="btn btn-sm btn-dark text-primary border-secondary"><i class="fa-brands fa-facebook"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- NEWSLETTER -->
-            <div class="card border-0 shadow-sm rounded-lg mb-4 text-white" style="background-color: #212529;">
-                <div class="card-body">
-                    <h4 class="h5 font-weight-bold mb-2 text-white">Bản tin</h4>
-                    <p class="small text-white-50 mb-3">
-                        Đăng ký nhận bản tin của chúng tôi để trở thành một trong những người đầu tiên cập nhật những thông tin mới nhất.
-                    </p>
-                    <form action="#">
-                        <div class="form-group mb-2">
-                            <input type="email" name="email" class="form-control form-control-sm bg-dark text-white border-secondary" placeholder="Địa chỉ Email" required>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-block btn-sm">Đăng ký</button>
-                    </form>
                 </div>
             </div>
         </div>
