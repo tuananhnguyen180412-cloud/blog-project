@@ -11,7 +11,7 @@ router.get('/:id/edit', blogController.edit);
 router.put('/:id', blogController.update);
 router.delete('/:id', blogController.destroy);
 
-// 3. Route xem chi tiết bài viết (Đặt ở cuối để hứng ID hoặc Slug)
-router.get('/:slug', blogController.show);
+// 3. Route xem chi tiết bài viết (ĐỔI :slug THÀNH :id)
+router.get('/:id', blogController.show);
 
 module.exports = router;
