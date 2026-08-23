@@ -53,7 +53,6 @@
                 <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
                         <div class="col-md-4 bg-dark">
-                            <!-- ĐÃ SỬA: Trỏ đường dẫn trực tiếp về /blogs/{{this._id}} -->
                             <a href="/blogs/{{this._id}}">
                                 <img src="{{this.img}}" alt="{{this.title}}" class="w-100 h-100" style="object-fit: cover; min-height: 180px;" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&auto=format&fit=crop&q=80';">
                             </a>
@@ -66,7 +65,6 @@
                                     </span>
                                     
                                     <h4 class="card-title h5 font-weight-bold">
-                                        <!-- ĐÃ SỬA: Trỏ đường dẫn trực tiếp về /blogs/{{this._id}} -->
                                         <a href="/blogs/{{this._id}}" class="text-white text-decoration-none">
                                             {{this.title}}
                                         </a>
@@ -93,9 +91,10 @@
                 {{/each}}
             </div>
 
+            <!-- NÚT THÊM BÀI VIẾT (ĐÃ THAY CHO NÚT TẢI THÊM) -->
             <div class="text-center mb-5">
-                <a href="/search" id="load-more-btn" class="btn btn-outline-light px-4 shadow-sm rounded-pill">
-                    Tải thêm
+                <a href="/blogs/create" class="btn btn-primary px-4 shadow-sm rounded-pill font-weight-bold">
+                    <i class="fa-solid fa-plus mr-1"></i> Thêm bài viết
                 </a>
             </div>
         </div>
