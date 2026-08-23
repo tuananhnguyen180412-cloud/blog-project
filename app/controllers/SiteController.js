@@ -12,17 +12,16 @@ class SiteController {
                 query.category = selectedCategory;
             }
 
-            const blogs = await Blog.find(query).lean();
+            const rawBlogs = await Blog.find(query).lean();
 
-            // Đã xóa chữ 'Tất cả' khỏi mảng này để tránh trùng lặp
-            const categories = [
-                'Lập trình', 
-                'Sở thích', 
-                'Tính cách', 
-                'Ẩm thực', 
-                'Học tập', 
-                'Định hướng'
-            ];
+            // CHUYỂN ĐỔI _id THÀNH CHUỖI STRING ĐỂ HANDLEBARS KHÔNG BỊ SỰ CỐ DỮ LIỆU
+            const blogs = rawBlogs.map(blog => ({
+                ...blog,
+                _id: blog._id ? blog._id.toString() : ''
+            }));
+
+            // Tự động lấy tất cả danh mục đang có trong database (Bao gồm cả 'Khác' và các mục mới)
+            const categories = await Blog.distinct('category');
 
             res.render('home', { 
                 blogs, 
@@ -41,9 +40,14 @@ class SiteController {
             let blogs = [];
 
             if (query) {
-                blogs = await Blog.find({
+                const rawBlogs = await Blog.find({
                     title: { $regex: query, $options: 'i' }
                 }).lean();
+
+                blogs = rawBlogs.map(blog => ({
+                    ...blog,
+                    _id: blog._id ? blog._id.toString() : ''
+                }));
             }
 
             res.render('search', { blogs, query });
