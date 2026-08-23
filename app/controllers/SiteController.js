@@ -14,9 +14,8 @@ class SiteController {
 
             const blogs = await Blog.find(query).lean();
 
-            // Danh sách các mục để truyền sang Handlebars render menu
+            // Đã xóa chữ 'Tất cả' khỏi mảng này để tránh trùng lặp
             const categories = [
-                'Tất cả', 
                 'Lập trình', 
                 'Sở thích', 
                 'Tính cách', 
@@ -93,10 +92,6 @@ class SiteController {
 
     // [GET] /logout - Bổ sung xử lý Đăng xuất
     logout(req, res) {
-        // Xóa cookie hoặc hủy session tại đây nếu có
-        // res.clearCookie('token'); 
-        
-        // Chuyển hướng về trang đăng nhập hoặc trang chủ
         res.redirect('/login');
     }
 }
