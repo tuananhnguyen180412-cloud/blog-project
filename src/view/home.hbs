@@ -21,15 +21,30 @@
         </div>
     </div>
 
+    <!-- CATEGORY FILTER BUTTONS -->
+    <div class="mb-4">
+        <div class="d-flex flex-wrap gap-2 align-items-center">
+            <span class="text-white-50 mr-2 font-weight-bold"><i class="fa-solid fa-filter mr-1"></i> Danh mục:</span>
+            {{#each categories}}
+                <a href="/?category={{this}}" 
+                   class="btn btn-sm {{#if (eq this ../currentCategory)}}btn-primary{{else}}btn-outline-light text-white-50{{/if}} mr-2 mb-2 rounded-pill px-3">
+                    {{this}}
+                </a>
+            {{/each}}
+        </div>
+    </div>
+
     <!-- MAIN CONTENT SECTION -->
     <div class="row">
         <!-- LEFT: BLOG POSTS -->
         <div class="col-lg-8">
-            <h3 class="h4 font-weight-bold mb-4 border-left border-primary pl-3 text-white">Bài đăng blog mới nhất</h3>
+            <h3 class="h4 font-weight-bold mb-4 border-left border-primary pl-3 text-white">
+                Bài đăng blog {{#if currentCategory}}({{currentCategory}}){{/if}}
+            </h3>
             
             <div class="mb-4" id="blog-list-container">
                 {{#each blogs}}
-                <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden bg-secondary text-white" style="background-color: #212529 !important;">
+                <div class="card mb-4 border-0 shadow-sm rounded-lg overflow-hidden text-white" style="background-color: #212529 !important;">
                     <div class="row no-gutters">
                         <!-- BỌC LINK CHO HÌNH ẢNH -->
                         <div class="col-md-4 bg-dark">
@@ -41,7 +56,7 @@
                             <div class="card-body d-flex flex-column justify-content-between h-100 py-3">
                                 <div>
                                     <span class="badge badge-primary mb-2 p-2">
-                                        {{#if this.tag}}{{this.tag}}{{else}}NodeJS{{/if}}
+                                        {{#if this.category}}{{this.category}}{{else}}Khác{{/if}}
                                     </span>
                                     
                                     <!-- BỌC LINK CHO TIÊU ĐỀ BÀI VIẾT -->
@@ -67,6 +82,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                {{else}}
+                <div class="alert alert-dark text-white-50 border-secondary">
+                    Chưa có bài viết nào thuộc danh mục này.
                 </div>
                 {{/each}}
             </div>

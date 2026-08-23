@@ -4,8 +4,32 @@ class SiteController {
     // [GET] /
     async index(req, res, next) {
         try {
-            const blogs = await Blog.find({}).lean();
-            res.render('home', { blogs });
+            const selectedCategory = req.query.category;
+            let query = {};
+
+            // Nếu có chọn danh mục và khác 'Tất cả' thì lọc theo danh mục đó
+            if (selectedCategory && selectedCategory !== 'Tất cả') {
+                query.category = selectedCategory;
+            }
+
+            const blogs = await Blog.find(query).lean();
+
+            // Danh sách các mục để truyền sang Handlebars render menu
+            const categories = [
+                'Tất cả', 
+                'Lập trình', 
+                'Sở thích', 
+                'Tính cách', 
+                'Ẩm thực', 
+                'Học tập', 
+                'Định hướng'
+            ];
+
+            res.render('home', { 
+                blogs, 
+                categories, 
+                currentCategory: selectedCategory || 'Tất cả' 
+            });
         } catch (error) {
             next(error);
         }
