@@ -21,15 +21,16 @@
         </div>
     </div>
 
-    <!-- CATEGORY FILTER SELECT (Dạng ô chọn) -->
+    <!-- CATEGORY FILTER SELECT (Sửa an toàn không gây lỗi 500) -->
     <div class="mb-4">
         <div class="form-inline">
             <label for="categorySelect" class="text-white-50 mr-2 font-weight-bold mb-0">
                 <i class="fa-solid fa-filter mr-1"></i> Danh mục:
             </label>
             <select id="categorySelect" class="form-control form-control-sm bg-dark text-white border-secondary rounded-pill px-3" style="max-width: 220px; cursor: pointer;" onchange="if (this.value) window.location.href = this.value;">
+                <option value="/">Tất cả</option>
                 {{#each categories}}
-                    <option value="{{#if (eq this "Tất cả")}}/{{else}}/?category={{this}}{{/if}}">
+                    <option value="/?category={{this}}">
                         {{this}}
                     </option>
                 {{/each}}
