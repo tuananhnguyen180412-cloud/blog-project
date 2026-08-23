@@ -135,18 +135,25 @@
     </div>
 </main>
 
+<!-- SCRIPT ĐỒNG BỘ TRẠNG THÁI CHO SELECT KHI TẢI TRANG -->
 <script>
-    (function cleanCategories() {
+    (function syncCategorySelect() {
         var select = document.getElementById('categorySelect');
         if (!select) return;
-        var seen = {};
-        for (var i = select.options.length - 1; i >= 0; i--) {
-            var txt = select.options[i].text.trim();
-            if (seen[txt]) {
-                select.remove(i);
-            } else {
-                seen[txt] = true;
+
+        var urlParams = new URLSearchParams(window.location.search);
+        var currentCat = urlParams.get('category');
+
+        if (currentCat) {
+            var targetValue = '/?category=' + currentCat;
+            for (var i = 0; i < select.options.length; i++) {
+                if (select.options[i].value === targetValue) {
+                    select.selectedIndex = i;
+                    break;
+                }
             }
+        } else {
+            select.selectedIndex = 0;
         }
     })();
 </script>
